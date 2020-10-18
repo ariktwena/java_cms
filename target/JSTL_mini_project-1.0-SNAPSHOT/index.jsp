@@ -12,8 +12,8 @@
 <div class="container">
     <%@include file="includes/navigation.inc"%>
 
+    <br>
 
-    <h1>Hello, world!</h1>
         <div class="row">
             <div class="col-sm-12 col-md-1 text-center" style=""></div>
 
@@ -23,7 +23,7 @@
 
                     <input type="hidden" name="target" value="login">
 
-                    <img class="mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+                    <img class="mb-4" src="images/cookie_man.png" alt="" width="72" height="72">
 
                     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
@@ -57,7 +57,7 @@
 
                     <input type="hidden" name="target" value="register">
 
-                    <img class="mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+                    <img class="mb-4" src="images/cookie_man.png" alt="" width="72" height="72">
 
                     <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
 
