@@ -1,11 +1,9 @@
-package FunctionLayer;
+package FunctionLayer.layer.user;
 
-import DBAccess.UserMapper;
-import FunctionLayer.databaseExceptions.DBexception;
-import FunctionLayer.user.InvalidPassword;
-import FunctionLayer.user.LoginSampleException;
-import FunctionLayer.user.User;
-import FunctionLayer.user.UserExists;
+import DBAccess.Handlers.UserHandler;
+import DBAccess.Mappers.UserMapper;
+import FunctionLayer.layer.database.DBexception;
+import FunctionLayer.entities.User;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -14,12 +12,12 @@ import java.util.ArrayList;
  * The purpose of LogicFacade is to...
  * @author kasper
  */
-public class LogicFacade {
+public class LogicFacadeUser {
 
     public static User login(String email, String password ) throws LoginSampleException, InvalidPassword {
 
         //Get user from the DB with a specific name
-        User user = UserMapper.login(email);
+        User user = UserHandler.login(email);
 
         //Username is null => no user was found in DB
         if(user.getUsername() == null){
@@ -50,7 +48,7 @@ public class LogicFacade {
         //Create user
 
         //Validate user input
-        if(UserMapper.userAldreadyExistsInDB(email)){
+        if(UserHandler.userAldreadyExistsInDB(email)){
             throw new UserExists(email);
 
         } else if (!password1.equals(password2)){
@@ -68,7 +66,7 @@ public class LogicFacade {
     }
 
     public static ArrayList<User> getAllUsersFromDB() throws DBexception {
-        ArrayList<User> allUsersFromDB = UserMapper.getAllUsersFromDB();
+        ArrayList<User> allUsersFromDB = UserHandler.getAllUsersFromDB();
         return allUsersFromDB;
     }
 
@@ -83,7 +81,7 @@ public class LogicFacade {
         //Create user
 
         //Validate user input
-        if(UserMapper.userAldreadyExistsInDB(email)){
+        if(UserHandler.userAldreadyExistsInDB(email)){
             throw new UserExists(email);
 
         } else {
@@ -99,7 +97,7 @@ public class LogicFacade {
 
     public static User getUserById(int user_id) throws DBexception {
 
-        User user = UserMapper.getUserById(user_id);
+        User user = UserHandler.getUserById(user_id);
         return user;
 
     }

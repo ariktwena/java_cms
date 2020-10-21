@@ -1,11 +1,11 @@
 package PresentationLayer;
 
-import FunctionLayer.LogicFacade;
-import FunctionLayer.databaseExceptions.DBexception;
-import FunctionLayer.user.InvalidPassword;
-import FunctionLayer.user.LoginSampleException;
-import FunctionLayer.user.User;
-import FunctionLayer.user.UserExists;
+import FunctionLayer.layer.user.LogicFacadeUser;
+import FunctionLayer.layer.database.DBexception;
+import FunctionLayer.layer.user.InvalidPassword;
+import FunctionLayer.layer.user.LoginSampleException;
+import FunctionLayer.entities.User;
+import FunctionLayer.layer.user.UserExists;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,7 +48,7 @@ public class Redirect extends Command {
 
             case "allUsers":
                 try{
-                    ArrayList<User> allUsersFromDB = LogicFacade.getAllUsersFromDB();
+                    ArrayList<User> allUsersFromDB = LogicFacadeUser.getAllUsersFromDB();
                     request.setAttribute("allUsersFromDB", allUsersFromDB);
                     adminMenu = "allUsers";
                     request.setAttribute("adminMenu", adminMenu);
@@ -66,7 +66,7 @@ public class Redirect extends Command {
                 int user_id = Integer.parseInt(request.getParameter("user_id"));
 
                 try {
-                    User userToEdit = LogicFacade.getUserById(user_id);
+                    User userToEdit = LogicFacadeUser.getUserById(user_id);
                     request.setAttribute("userToEdit", userToEdit);
                     adminMenu = "editUser";
                     request.setAttribute("adminMenu", adminMenu);

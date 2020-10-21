@@ -1,10 +1,10 @@
 package PresentationLayer;
 
-import FunctionLayer.LogicFacade;
-import FunctionLayer.user.LoginSampleException;
-import FunctionLayer.user.InvalidPassword;
-import FunctionLayer.user.User;
-import FunctionLayer.user.UserExists;
+import FunctionLayer.layer.user.LogicFacadeUser;
+import FunctionLayer.layer.user.LoginSampleException;
+import FunctionLayer.layer.user.InvalidPassword;
+import FunctionLayer.entities.User;
+import FunctionLayer.layer.user.UserExists;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,7 +25,7 @@ public class Register extends Command {
         String password2 = request.getParameter( "password2" );
 
         try{
-            User user = LogicFacade.createUser( username, email, password1, password2 );
+            User user = LogicFacadeUser.createUser( username, email, password1, password2 );
             HttpSession session = request.getSession();
 
             session.setAttribute("user", user);

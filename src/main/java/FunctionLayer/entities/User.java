@@ -1,4 +1,4 @@
-package FunctionLayer.user;
+package FunctionLayer.entities;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;

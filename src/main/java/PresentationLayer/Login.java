@@ -1,15 +1,13 @@
 package PresentationLayer;
 
-import FunctionLayer.LogicFacade;
-import FunctionLayer.databaseExceptions.DBexception;
-import FunctionLayer.user.LoginSampleException;
-import FunctionLayer.user.InvalidPassword;
-import FunctionLayer.user.User;
+import FunctionLayer.layer.user.LogicFacadeUser;
+import FunctionLayer.layer.user.LoginSampleException;
+import FunctionLayer.layer.user.InvalidPassword;
+import FunctionLayer.entities.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 
 /**
  The purpose of Login is to...
@@ -32,7 +30,7 @@ public class Login extends Command {
         //Check the username and password that is provided, and the user from DB
         try {
 
-            User user = LogicFacade.login(email, password);
+            User user = LogicFacadeUser.login(email, password);
 
             HttpSession session = request.getSession();
 

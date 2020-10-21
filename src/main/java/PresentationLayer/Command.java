@@ -1,14 +1,18 @@
 package PresentationLayer;
 
-import FunctionLayer.user.LoginSampleException;
-import FunctionLayer.user.InvalidPassword;
-import FunctionLayer.user.UserExists;
+import FunctionLayer.layer.user.LoginSampleException;
+import FunctionLayer.layer.user.InvalidPassword;
+import FunctionLayer.layer.user.UserExists;
+import PresentationLayer.admin.AddUser;
+import PresentationLayer.admin.BulkHandlerAdmin;
+import PresentationLayer.admin.DeleteUser;
+import PresentationLayer.admin.EditUser;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 
-abstract class Command {
+public abstract class Command {
 
     private static HashMap<String, Command> commands;
 
@@ -20,7 +24,7 @@ abstract class Command {
         commands.put( "addUser", new AddUser());
         commands.put( "editUser", new EditUser());
         commands.put( "deleteUser", new DeleteUser());
-        commands.put( "bulkHandler", new BulkHandler());
+        commands.put( "bulkHandler", new BulkHandlerAdmin());
     }
 
     static Command from( HttpServletRequest request ) {

@@ -1,10 +1,11 @@
-package PresentationLayer;
+package PresentationLayer.admin;
 
-import FunctionLayer.LogicFacade;
-import FunctionLayer.user.InvalidPassword;
-import FunctionLayer.user.LoginSampleException;
-import FunctionLayer.user.User;
-import FunctionLayer.user.UserExists;
+import FunctionLayer.layer.user.LogicFacadeUser;
+import FunctionLayer.layer.user.InvalidPassword;
+import FunctionLayer.layer.user.LoginSampleException;
+import FunctionLayer.entities.User;
+import FunctionLayer.layer.user.UserExists;
+import PresentationLayer.Command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,7 +33,7 @@ public class EditUser extends Command {
         }else {
             try{
                 //We dont return a user, because we don't need the data
-                LogicFacade.updateUserById(user_id, username, user_email, user_role);
+                LogicFacadeUser.updateUserById(user_id, username, user_email, user_role);
 
                 //So we can see the inputs we made when we return to the edit page
                 User userToEdit = new User(user_id, username, user_email, user_role);

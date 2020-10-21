@@ -1,14 +1,10 @@
-package DBAccess;
+package DBAccess.DBSetup;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
-/**
- The purpose of Connector is to...
-
- @author kasper
- */
-public class Connector {
-
+public class Connector_old {
     private static String URL;
     private static String USERNAME;
     private static String PASSWORD;
@@ -44,7 +40,4 @@ public class Connector {
             PASSWORD = "";
         }
     }
-
-
-
 }

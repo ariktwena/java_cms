@@ -1,15 +1,14 @@
-package PresentationLayer;
+package PresentationLayer.admin;
 
-import FunctionLayer.LogicFacade;
-import FunctionLayer.user.InvalidPassword;
-import FunctionLayer.user.LoginSampleException;
-import FunctionLayer.user.User;
-import FunctionLayer.user.UserExists;
+import FunctionLayer.layer.user.LogicFacadeUser;
+import FunctionLayer.layer.user.InvalidPassword;
+import FunctionLayer.layer.user.LoginSampleException;
+import FunctionLayer.entities.User;
+import FunctionLayer.layer.user.UserExists;
 import PresentationLayer.Command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 public class AddUser extends Command {
 
@@ -41,7 +40,7 @@ public class AddUser extends Command {
 
         } else {
             try{
-                User createdUser = LogicFacade.createUserFromAdminPage(username, user_email, password, user_role);
+                User createdUser = LogicFacadeUser.createUserFromAdminPage(username, user_email, password, user_role);
 
                 successMessage = "User: " + createdUser.getUsername() + " was successfully created!";
                 request.setAttribute("successMessage", successMessage);

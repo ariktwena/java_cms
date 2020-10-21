@@ -1,4 +1,4 @@
-package FunctionLayer.user;
+package FunctionLayer.layer.user;
 
 public class UserAlreadyLoggedIn extends Exception {
 

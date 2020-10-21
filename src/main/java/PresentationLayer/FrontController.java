@@ -5,9 +5,9 @@
  */
 package PresentationLayer;
 
-import FunctionLayer.user.InvalidPassword;
-import FunctionLayer.user.LoginSampleException;
-import FunctionLayer.user.UserExists;
+import FunctionLayer.layer.user.InvalidPassword;
+import FunctionLayer.layer.user.LoginSampleException;
+import FunctionLayer.layer.user.UserExists;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

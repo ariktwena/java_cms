@@ -1,11 +1,10 @@
-package PresentationLayer;
+package PresentationLayer.admin;
 
-import FunctionLayer.LogicFacade;
-import FunctionLayer.databaseExceptions.DBexception;
-import FunctionLayer.user.InvalidPassword;
-import FunctionLayer.user.LoginSampleException;
-import FunctionLayer.user.User;
-import FunctionLayer.user.UserExists;
+import FunctionLayer.layer.user.LogicFacadeUser;
+import FunctionLayer.layer.database.DBexception;
+import FunctionLayer.layer.user.LoginSampleException;
+import FunctionLayer.entities.User;
+import PresentationLayer.Command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,13 +30,13 @@ public class DeleteUser extends Command {
                 String adminMenu;
                 String destination;
                 //We don't return a user, because we don't need the data
-                LogicFacade.deleteUserById(user_id);
+                LogicFacadeUser.deleteUserById(user_id);
 
                 successMessage = "User with user_id: " + user_id + " was deleted.";
                 request.setAttribute("successMessage", successMessage);
 
                 //We reload the user list
-                ArrayList<User> allUsersFromDB = LogicFacade.getAllUsersFromDB();
+                ArrayList<User> allUsersFromDB = LogicFacadeUser.getAllUsersFromDB();
                 request.setAttribute("allUsersFromDB", allUsersFromDB);
 
                 adminMenu = "allUsers";

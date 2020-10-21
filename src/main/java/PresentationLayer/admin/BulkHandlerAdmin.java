@@ -1,17 +1,18 @@
-package PresentationLayer;
+package PresentationLayer.admin;
 
-import FunctionLayer.LogicFacade;
-import FunctionLayer.databaseExceptions.DBexception;
-import FunctionLayer.user.InvalidPassword;
-import FunctionLayer.user.LoginSampleException;
-import FunctionLayer.user.User;
-import FunctionLayer.user.UserExists;
+import FunctionLayer.layer.user.LogicFacadeUser;
+import FunctionLayer.layer.database.DBexception;
+import FunctionLayer.layer.user.InvalidPassword;
+import FunctionLayer.layer.user.LoginSampleException;
+import FunctionLayer.entities.User;
+import FunctionLayer.layer.user.UserExists;
+import PresentationLayer.Command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 
-public class BulkHandler extends Command {
+public class BulkHandlerAdmin extends Command {
     @Override
     protected String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, InvalidPassword, UserExists {
 
@@ -28,7 +29,7 @@ public class BulkHandler extends Command {
                         //we loop through the array with the user id's we want to change
                         for(String currentElement : bulkArrayUserId){
                             user_id = Integer.parseInt(currentElement);
-                            LogicFacade.changeUserRoleToCustomer(user_id);
+                            LogicFacadeUser.changeUserRoleToCustomer(user_id);
                         }
 
                         successMessage = "Users where successfully converted to 'Customers'";
@@ -46,7 +47,7 @@ public class BulkHandler extends Command {
                         //we loop through the array with the user id's we want to change
                         for(String currentElement : bulkArrayUserId){
                             user_id = Integer.parseInt(currentElement);
-                            LogicFacade.changeUserRoleToAdmin(user_id);
+                            LogicFacadeUser.changeUserRoleToAdmin(user_id);
                         }
 
                         successMessage = "Users where successfully converted to 'Admin'";
@@ -64,7 +65,7 @@ public class BulkHandler extends Command {
                         //we loop through the array with the user id's we want to change
                         for(String currentElement : bulkArrayUserId){
                             user_id = Integer.parseInt(currentElement);
-                            LogicFacade.deleteUserById(user_id);
+                            LogicFacadeUser.deleteUserById(user_id);
                         }
 
                         successMessage = "Users where successfully deleted.";
@@ -111,7 +112,7 @@ public class BulkHandler extends Command {
         request.setAttribute("successMessage", successMessage);
 
         //We reload the user list
-        ArrayList<User> allUsersFromDB = LogicFacade.getAllUsersFromDB();
+        ArrayList<User> allUsersFromDB = LogicFacadeUser.getAllUsersFromDB();
         request.setAttribute("allUsersFromDB", allUsersFromDB);
 
         adminMenu = "allUsers";
